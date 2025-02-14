@@ -1,0 +1,153 @@
+/* poppins google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+    /* Base Background */
+    --bg-light-gray: #f0f0f0;
+
+    /* Primary UI elements (e.g., headers, navigation bars) */
+    --ui-primary: #34495e;
+    /* A deep blue-gray for a professional, modern feel */
+
+    /* Accent for buttons, links, and calls-to-action */
+    --ui-accent: #e3e1e1;
+    /* A soft teal to highlight interactive items */
+
+    /* Secondary elements (borders, subtle highlights) */
+    --ui-secondary: #95a5a6;
+    /* A gentle gray for dividers and less dominant UI parts */
+
+    /* Text color for optimal readability */
+    --text-color: #2c3e50;
+    /* Dark slate for clear, legible text */
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "poppins";
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+header {
+    width: 100%;
+    background-color: var(--bg-light-gray);
+    padding: 6px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* header styling */
+nav {
+    position: relative;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+/* dropdowns styling */
+.dropdown-container {
+    display: flex;
+    gap: 8px;
+}
+
+.dropdown-container>select {
+    width: 220px;
+}
+
+nav button {
+    background-color: var(--ui-accent);
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: none;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.car-card {
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px !important;
+    text-decoration: none;
+    height: 340px !important;
+}
+
+.car-card :is(a) {
+    flex: 7 !important;
+}
+
+.car-card :is(.card-body) {
+    flex: 3 !important;
+}
+
+.car-card .title {
+    text-transform: capitalize;
+}
+
+.car-card p {
+    margin: 0;
+}
+
+.car-card :is(.car-price, .car-engine) {
+    margin-left: 0.25rem;
+    font-weight: 500;
+}
+
+.car-card img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.car-card .car-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border: none;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .car-card {
+        height: auto !important;
+    }
+}
+
+/* small screen */
+@media only screen and (max-width: 450px) {
+
+    /* header styling */
+    nav,
+    .right {
+        flex-direction: column;
+    }
+
+    .dropdown-container>select {
+        width: auto;
+    }
+
+}

@@ -1,0 +1,403 @@
+const carsData = {
+    Toyota: {
+        corolla: {
+            name: "Corolla Altis X",
+            price: "Rs 5,969,000",
+            year: 2025,
+            engine: "1600 cc",
+            features: {
+                "Airbags": 2,
+                "Seatbelts": 5,
+                "Passenger Seat Belt Warning": "❌",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "❌"
+            },
+            colors: ["black", "White", "Silver", "Blue"],
+            picture: {
+                default: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            },
+        },
+        landCruiser: {
+            name: "Land Cruiser 300",
+            price: "Rs 80,000,000",
+            year: 2025,
+            engine: "3.5L V6 Twin-Turbo",
+            features: {
+                "Airbags": 8,
+                "Seatbelts": 7,
+                "Passenger Seat Belt Warning": "✅",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            picture: {
+                default: "https://cdn.motor1.com/images/mgl/wlp9wV/s1/toyota-land-cruiser-70-series-humanitarian-efforts.webp",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+            colors: ["Black", "White", "Blue", "Bronze"],
+        },
+        fortuner: {
+            name: "Fortuner Legender",
+            price: "Rs 21,089,000",
+            year: 2025,
+            engine: "2.8L Diesel Turbo",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 7,
+                "Passenger Seat Belt Warning": "✅",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["White", "Black", "Grey"],
+            picture: {
+                default: "https://www.toyota-central.com/Assets/images/Vehicle/FortunerLegender/Color/218-attitude-black.png",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    Honda: {
+        civic: {
+            name: "Honda Civic RS",
+            price: "Rs 8,100,000",
+            year: 2025,
+            engine: "1.5L VTEC Turbo",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 5,
+                "Passenger Seat Belt Warning": "✅",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Red", "Black", "White", "Silver"],
+            picture: {
+                default: "https://cdn.motor1.com/images/mgl/vxZ1mG/s1/2025-honda-civic-rs-jdm.jpg",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        },
+        accord: {
+            name: "Honda Accord Hybrid",
+            price: "Rs 14,500,000",
+            year: 2025,
+            engine: "2.0L Hybrid",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 5,
+                "Passenger Seat Belt Warning": "✅",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Black", "White", "Grey"],
+            picture: {
+                default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpD_TOopT4tE57Q_zqfqVjjc50RvjGfv6RBw&s",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    BMW: {
+        series3: {
+            name: "BMW 3 Series",
+            price: "Rs 19,500,000",
+            year: 2025,
+            engine: "2.0L TwinPower Turbo",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 5,
+                "Passenger Seat Belt Warning": "✅",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Blue", "Black", "White"],
+            picture: {
+                default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDEhwZOMwGuDp41SVTCWjSADxjw318UtuDOA&s",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        },
+        series7: {
+            name: "BMW 7 Series",
+            price: "Rs 40,000,000",
+            year: 2025,
+            engine: "3.0L TwinPower Turbo",
+            features: {
+                "Airbags": 10,
+                "Seatbelts": 5,
+                "Passenger Seat Belt Warning": "✅",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "✅",
+                "Auto Parking": "✅"
+            },
+            colors: ["Black", "White", "Grey"],
+            picture: {
+                default: "https://www.bmw.in/content/dam/bmw/common/topics/offers-and-services/bmw-special-sales-2020/protection-vehicle/bmw-css-7-series-protection-ms-new-standard.jpg",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    Mercedes: {
+        eClass: {
+            name: "Mercedes-Benz E-Class",
+            price: "Rs 23,500,000",
+            year: 2025,
+            engine: "2.0L Turbo",
+            features: {
+                "Airbags": 8,
+                "Seatbelts": 5,
+                "Passenger Seat Belt Warning": "✅",
+                "Child Lock": "✅",
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Silver", "Black", "White"],
+            picture: {
+                default: "https://www.topgear.com/sites/default/files/2023/12/1%20Mercedes%20E-Class%20review.jpg",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    Tesla: {
+        modelS: {
+            name: "Tesla Model S",
+            price: "Rs 25,000,000",
+            year: 2025,
+            engine: "Electric Dual Motor",
+            features: {
+                "Autopilot": "✅",
+                "Airbags": 8,
+                "Seatbelts": 5,
+                "Sunroof": "✅",
+                "Self-Driving": "✅"
+            },
+            colors: ["Red", "Black", "White"],
+            picture: {
+                default: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2018_Tesla_Model_S_75D.jpg/1200px-2018_Tesla_Model_S_75D.jpg",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        },
+        modelX: {
+            name: "Tesla Model X",
+            price: "Rs 30,000,000",
+            year: 2025,
+            engine: "Electric Dual Motor",
+            features: {
+                "Autopilot": "✅",
+                "Airbags": 8,
+                "Seatbelts": 7,
+                "Sunroof": "✅",
+                "Self-Driving": "✅"
+            },
+            colors: ["White", "Black", "Blue"],
+            picture: {
+                default: "https://images.prismic.io/carwow/c340a77d-af56-4562-abfb-bd5518ccb292_2023+Tesla+Model+X+front+quarter+moving.jpg",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    Ford: {
+        mustang: {
+            name: "Ford Mustang GT",
+            price: "Rs 18,500,000",
+            year: 2025,
+            engine: "5.0L V8",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 4,
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Yellow", "Red", "Black"],
+            picture: {
+                default: "https://hips.hearstapps.com/hmg-prod/images/2019-ford-mustang-shelby-gt-s-lead2-1566224220.jpg",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    Audi: {
+        a6: {
+            name: "Audi A6",
+            price: "Rs 19,500,000",
+            year: 2025,
+            engine: "2.0L Turbo",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 5,
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Black", "White", "Grey"],
+            picture: {
+                default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoiJg4ZpF3F8Di73_nD7ITHkdsH5NBjREQew&s",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    Nissan: {
+        gtr: {
+            name: "Nissan GT-R",
+            price: "Rs 50,000,000",
+            year: 2025,
+            engine: "3.8L Twin-Turbo V6",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 4,
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Red", "Black", "Silver"],
+            picture: {
+                default: "https://wieck-nissanao-production.s3.us-west-1.amazonaws.com/releaseInlineImages/fd1297096bc4d29f80c620d3af19336327b241cd",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    },
+    Hyundai: {
+        tucson: {
+            name: "Hyundai Tucson",
+            price: "Rs 8,200,000",
+            year: 2025,
+            engine: "2.0L Petrol",
+            features: {
+                "Airbags": 6,
+                "Seatbelts": 5,
+                "ABS Brakes": "✅",
+                "Sunroof": "✅"
+            },
+            colors: ["Blue", "White", "Black"],
+            picture: {
+                default: "https://upload.wikimedia.org/wikipedia/commons/5/53/Hyundai_Tucson_%28NX4%2C_SWB%29_PHEV_1X7A1858.jpg",
+                red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+            },
+        }
+    }
+};
+
+const company = document.getElementById("company");
+const model = document.getElementById("model");
+const displayCarsBox = document.getElementById("display-cars-box");
+
+// display companies in dropdown
+function companyHandler() {
+    for (let key in carsData) {
+        company.innerHTML += `<option value="${key}">${key}</option>`;
+    }
+}
+
+// display models in dropdown after selecting company
+function companyChangeHandler() {
+    model.innerHTML = `<option selected value="">Select Model</option>`;
+    for (let key in carsData[company.value]) {
+        model.innerHTML += `<option value="${key}">${key}</option>`;
+    }
+}
+
+// display all cars
+function displayCars() {
+    for (let key in carsData) {
+        for (let key1 in carsData[key]) {
+            let car = carsData[key][key1];
+            displayCarsBox.innerHTML += `
+           <div class="col">
+                <div class="card car-card">
+                    <a href="./carDetail/index.html">
+                        <img src="${car.picture.default}"
+                            class="card-img-top" alt="..." id="car-img">
+                    </a>
+                    <div class="card-body mt-3">
+                        <h5 class="card-title title">${car.name}</h5>
+                        <p>Engine: <span class="car-engine">1600${car.engine}</span></p>
+                        <p>Price: <span class="car-price">${car.price}</span></p>
+                    </div>
+                </div>
+            </div>`;
+        }
+    }
+}
+
+function searchCarHandler() {
+    displayCarsBox.innerHTML = "";
+    if (company.value && model.value) {
+        const carModel = carsData[company.value][model.value];
+        displayCarsBox.innerHTML += `
+        <div class="col">
+             <div class="card car-card">
+                 <a href="./carDetail/index.html">
+                     <img src="${carModel.picture.default}"
+                         class="card-img-top" alt="..." id="car-img">
+                 </a>
+                 <div class="card-body mt-3">
+                     <h5 class="card-title title">${carModel.name}</h5>
+                     <p>Engine: <span class="car-engine">1600${carModel.engine}</span></p>
+                     <p>Price: <span class="car-price">${carModel.price}</span></p>
+                 </div>
+             </div>
+         </div>`;
+    } else if (company.value) {
+        const brandOfCar = carsData[company.value];
+        for (let key in brandOfCar) {
+            console.log(brandOfCar[key]);
+            displayCarsBox.innerHTML += `
+         <div class="col">
+              <div class="card car-card">
+                  <a href="./carDetail/index.html">
+                      <img src="${brandOfCar[key].picture.default}"
+                          class="card-img-top" alt="..." id="car-img">
+                  </a>
+                  <div class="card-body mt-3">
+                      <h5 class="card-title title">${brandOfCar[key].name}</h5>
+                      <p>Engine: <span class="car-engine">1600${brandOfCar[key].engine}</span></p>
+                      <p>Price: <span class="car-price">${brandOfCar[key].price}</span></p>
+                  </div>
+              </div>
+          </div>`;
+        }
+
+    } else {
+        displayCars();
+    }
+}
+
+
+function title() {
+    console.log(event);
+
+}
+// clear dropdown value
+function clearDropDown() {
+    company.value = "";
+    model.value = "";
+}
+
+displayCars();
+companyHandler();
