@@ -354,7 +354,7 @@ function searchCarHandler() {
                          class="card-img-top" alt="..." id="car-img">
                  <div class="card-body mt-3">
                      <h5 class="card-title title">${carModel.name}</h5>
-                     <p>Engine: <span class="car-engine">1600${carModel.engine}</span></p>
+                     <p>Engine: <span class="car-engine">${carModel.engine}</span></p>
                      <p>Price: <span class="car-price">${carModel.price}</span></p>
                  </div>
              </div>
@@ -370,7 +370,7 @@ function searchCarHandler() {
                           class="card-img-top" alt="..." id="car-img">
                   <div class="card-body mt-3">
                       <h5 class="card-title title">${brandOfCar[key].name}</h5>
-                      <p>Engine: <span class="car-engine">1600${brandOfCar[key].engine}</span></p>
+                      <p>Engine: <span class="car-engine">${brandOfCar[key].engine}</span></p>
                       <p>Price: <span class="car-price">${brandOfCar[key].price}</span></p>
                   </div>
               </div>
