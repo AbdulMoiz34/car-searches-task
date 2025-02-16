@@ -20,6 +20,8 @@
     /* Text color for optimal readability */
     --text-color: #2c3e50;
     /* Dark slate for clear, legible text */
+    --bg-color: #1C2333;
+    --bg-dark-color: #131823;
 }
 
 
@@ -39,13 +41,17 @@ html {
     height: 100%;
 }
 
+body {
+    background-color: var(--bg-color) !important;
+}
 
 header {
     width: 100%;
-    background-color: var(--bg-light-gray);
+    background-color: var(--bg-dark-color);
     padding: 6px 0;
     display: flex;
     justify-content: center;
+    color: #fff;
 }
 
 /* header styling */
@@ -78,12 +84,14 @@ nav {
 }
 
 nav button {
-    background-color: var(--ui-accent);
+    background-color: var(--bg-dark-color);
     padding: 6px 8px;
     border-radius: 6px;
     border: none;
     color: var(--text-color);
+    color: #fff;
     font-size: 15px;
+    box-shadow: 0px 0px 4px #fff;
 }
 
 .car-card {
@@ -91,7 +99,10 @@ nav button {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 10px !important;
     text-decoration: none;
-    height: 340px !important;
+    height: 370px !important;
+    cursor: pointer;
+    background-color: var(--bg-dark-color) !important;
+    color: #fff !important; 
 }
 
 .car-card :is(a) {

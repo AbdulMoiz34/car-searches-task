@@ -13,11 +13,11 @@ const carsData = {
                 "ABS Brakes": "✅",
                 "Sunroof": "❌"
             },
-            colors: ["black", "White", "Silver", "Blue"],
+            colors: ["blue", "red", "black"],
             picture: {
                 default: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
                 red: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                black: "https://cache4.pakwheels.com/ad_pictures/9445/toyota-corolla-altis-x-automatic-1-6-2021-94453194.jpg"
             },
         },
         landCruiser: {
@@ -36,7 +36,7 @@ const carsData = {
             picture: {
                 default: "https://cdn.motor1.com/images/mgl/wlp9wV/s1/toyota-land-cruiser-70-series-humanitarian-efforts.webp",
                 red: "https://files.toyota.com.bh/s3fs-public/2021-06/3Q3%20Dark%20Red%20Mica%20Metallic_1.png?VersionId=ok_K1Xbz1.cB.JaTbgHwnKHG8EH1z0tw",
-                black: "https://images.pexels.com/photos/919073/pexels-photo-919073.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                black: "https://landcruiserprado.com/wp-content/uploads/823993.jpg"
 
             },
             colors: ["white", "black", "red"]
@@ -303,95 +303,89 @@ const carsData = {
     }
 };
 
-const company = document.getElementById("company");
-const model = document.getElementById("model");
-const displayCarsBox = document.getElementById("display-cars-box");
-
-// display companies in dropdown
-function companyHandler() {
-    for (let key in carsData) {
-        company.innerHTML += `<option value="${key}">${key}</option>`;
-    }
+function getModel() {
+    const params = new URLSearchParams(window.location.search)
+    const brand = params.get("brand");
+    const model = params.get("model");
+    return carsData[brand][model];
 }
+const carDetails = getModel();
+// change website title
+document.querySelector("title").textContent = carDetails.name;
 
-// display models in dropdown after selecting company
-function companyChangeHandler() {
-    model.innerHTML = `<option selected value="">Select Model</option>`;
-    for (let key in carsData[company.value]) {
-        model.innerHTML += `<option value="${key}">${key}</option>`;
-    }
-}
+function displayCarDetails(car) {
+    // Update Basic Information
+    const carImage = document.getElementById("carImage");
+    const colorSelector = document.querySelector(".color-selector");
+    const featuresList = document.getElementById("featuresList");
+    carImage.src = car.picture.default;
+    document.getElementById("carPrice").textContent = car.price;
+    document.getElementById("carName").textContent = car.name;;
+    document.getElementById("carYear").textContent = car.year;
+    document.getElementById("carEngine").textContent = car.engine;
 
-// display all cars
-function displayCars() {
-    for (let key in carsData) {
-        for (let key1 in carsData[key]) {
-            let car = carsData[key][key1];
-            displayCarsBox.innerHTML += `
-           <div class="col">
-                <div class="card car-card" onclick="redirectToDetail('${key}' , '${key1}')">
-                        <img src="${car.picture.default}"
-                            class="card-img-top" alt="..." id="car-img">
-                    <div class="card-body mt-3">
-                        <h5 class="card-title title">${car.name}</h5>
-                        <p>Engine: <span class="car-engine">${car.engine}</span></p>
-                        <p>Price: <span class="car-price">${car.price}</span></p>
-                    </div>
-                </div>
-            </div>`;
+    // car color selector
+    colorSelector.innerHTML = "";
+    car.colors.forEach(color => {
+        colorSelector.innerHTML += `<div class="color-option" data-color="${color}" title="${color}" style="background-color: ${color}"></div`;
+    })
+    const colorOptions = document.querySelectorAll(".color-option");
+    colorOptions[0].classList.add("active");
+
+    // car color click handler
+    colorOptions.forEach(el => el.addEventListener("click", () => {
+        colorOptions.forEach(el => el.classList.remove("active"));
+        el.classList.add("remove");
+        const selectedColor = el.getAttribute("data-color");
+        const pic = car.picture[selectedColor] ?? car.picture.default;
+        console.log(pic);
+        carImage.src = pic;
+        carImage.style.opacity = 0;
+        setTimeout(() => carImage.style.opacity = 1, 300);
+    }));
+    // console.log(colorOptions);
+
+    // features of car
+    featuresList.innerHTML = "";
+    const carFeaturesInArr = Object.entries(car.features);
+    console.log(carFeaturesInArr);
+
+    for (let [feature, value] of carFeaturesInArr) {
+        let iconClass = "";
+        switch (feature.toLowerCase()) {
+            case 'airbags':
+                iconClass = 'fas fa-car-burst';
+                break;
+            case 'seatbelts':
+                iconClass = 'fas fa-user-shield';
+                break;
+            case 'sunroof':
+                iconClass = 'fas fa-sun';
+                break;
+            case 'abs brakes':
+                iconClass = 'fas fa-brake-warning';
+                break;
+            case 'child lock':
+                iconClass = 'fas fa-lock';
+                break;
+            case 'autopilot':
+                iconClass = 'fas fa-robot';
+                break;
+            case 'self-driving':
+                iconClass = 'fas fa-car';
+                break;
+            default:
+                iconClass = 'fas fa-check-circle';
+        }
+        let iconColor = (value === "❌") ? "var(--bs-danger)" : "var(--bs-success)";
+        if (typeof value === "number") {
+            console.log("test");
+            featuresList.innerHTML += `<div class="feature-item"><i class="fas ${iconClass}" style="color: ${iconColor}"></i><span>${feature}: ${value}</span></div>`;
+        } else {
+            console.log("test");
+            featuresList.innerHTML += `<div class="feature-item"><i class="fas ${iconClass}" style="color: ${iconColor}"></i><span>${feature}</span></div>`;
         }
     }
 }
 
-function searchCarHandler() {
-    displayCarsBox.innerHTML = "";
-    if (company.value && model.value) {
-        const carModel = carsData[company.value][model.value];
-        displayCarsBox.innerHTML += `
-        <div class="col">
-             <div class="card car-card" onclick="redirectToDetail('${company.value}' , '${model.value}')">
-                     <img src="${carModel.picture.default}"
-                         class="card-img-top" alt="..." id="car-img">
-                 <div class="card-body mt-3">
-                     <h5 class="card-title title">${carModel.name}</h5>
-                     <p>Engine: <span class="car-engine">1600${carModel.engine}</span></p>
-                     <p>Price: <span class="car-price">${carModel.price}</span></p>
-                 </div>
-             </div>
-         </div>`;
-    } else if (company.value) {
-        const brandOfCar = carsData[company.value];
-        for (let key in brandOfCar) {
-            console.log(brandOfCar[key]);
-            displayCarsBox.innerHTML += `
-         <div class="col">
-              <div class="card car-card" onclick="redirectToDetail('${company.value}' , '${key}')">
-                      <img src="${brandOfCar[key].picture.default}"
-                          class="card-img-top" alt="..." id="car-img">
-                  <div class="card-body mt-3">
-                      <h5 class="card-title title">${brandOfCar[key].name}</h5>
-                      <p>Engine: <span class="car-engine">1600${brandOfCar[key].engine}</span></p>
-                      <p>Price: <span class="car-price">${brandOfCar[key].price}</span></p>
-                  </div>
-              </div>
-          </div>`;
-        }
-
-    } else {
-        displayCars();
-    }
-}
-
-// clear dropdown value
-function clearDropDown() {
-    company.value = "";
-    model.value = "";
-}
-
-function redirectToDetail(brand, model) {
-    console.log(brand, model);
-    window.location.href = `carDetail/index.html?brand=${brand}&model=${model}`;
-}
-
-displayCars();
-companyHandler();
+displayCarDetails(carDetails);

@@ -1,16 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Car Details</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Car Detail App</h1>
-    <script src="../app.js"></script>
+    <div class="container py-4">
+        <div class="row g-4">
+            <!-- Image Section -->
+            <div class="col-lg-7">
+                <div class="car-image-container rounded-4 overflow-hidden position-relative">
+                    <img id="carImage" class="img-fluid w-100 h-100 object-fit-cover" alt="Car Image">
+                    <div class="image-overlay"></div>
+                </div>
+
+                <!-- Color Selection -->
+                <div class="color-selector mt-3 d-flex gap-2 justify-content-center">
+                    <!-- Colors will be added dynamically -->
+                </div>
+            </div>
+
+            <!-- Details Section -->
+            <div class="col-lg-5">
+                <div class="car-details">
+                    <h1 id="carName" class="display-5 fw-bold mb-3"></h1>
+                    <div class="price-badge mb-4">
+                        <span id="carPrice" class="h3 text-primary"></span>
+                    </div>
+
+                    <!-- Specifications -->
+                    <div class="specs-container mb-4">
+                        <div class="spec-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Year: </span>
+                            <span id="carYear"></span>
+                        </div>
+                        <div class="spec-item">
+                         <img src="../assets/car-engine.png" width="26" alt="">
+                            <span>Engine: </span>
+                            <span id="carEngine"></span>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="features-section">
+                        <h3 class="mb-3">Key Features</h3>
+                        <div id="featuresList" class="features-grid">
+                            <!-- Features will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="app.js"></script>
 </body>
 
 </html>
